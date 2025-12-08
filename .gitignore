@@ -1,0 +1,17 @@
+# --- Python specific ---
+# Ignore the Virtual Environment folder (It's huge and local-only)
+venv/
+.venv/
+
+# Ignore Python compiled files (They are auto-generated)
+__pycache__/
+*.pyc
+
+# --- IDE specific ---
+# Ignore PyCharm settings (Your personal workspace preferences)
+.idea/
+
+# --- OS specific ---
+# Ignore Mac/Windows system files
+.DS_Store
+Thumbs.db
