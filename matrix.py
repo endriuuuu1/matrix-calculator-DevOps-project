@@ -226,6 +226,11 @@ class Matrix:
 
 if __name__ == "__main__":
 
+    bletfen_matrix = Matrix([[1,2],[3,4]])
+    andria_matrix = Matrix([[5,6],[7,8]])
+
+    print(bletfen_matrix.scalar_multiply(5))
+
     # emtpy_matrix = Matrix([])
     #
     # matrix1x1 = Matrix([[8]])
@@ -233,17 +238,19 @@ if __name__ == "__main__":
     # matrix2x2 = Matrix([[1,2], [3,4]])
 
     # matrix_rand2x3 = Matrix([[1, 2], [4, 5], [8, 9]])
-
-    matrix3x3 = Matrix([[1,2,3],[4,5,6],[7,8,9]])
-
-    matrix4x4 = Matrix([[1,2,3,4],
-                        [5,6,7,0],
-                        [9,10,3,10],
-                        [-1,11,4,8]
-                        ])
-
-    print(matrix3x3.determinant())
-    print(matrix4x4.determinant())
+    #
+    # matrix3x3 = Matrix([[1,2,3],
+    #                     [4,5,6],
+    #                     [7,8.5,9]])
+    #
+    # matrix4x4 = Matrix([[1,2,3,4],
+    #                     [5,6,7,0],
+    #                     [9,10,3,10],
+    #                     [-1,11,4,8]
+    #                     ])
+    #
+    # print(matrix3x3.determinant())
+    # print(matrix4x4.determinant())
     # print(matrix4x4.inverse())
     # print(matrix3x3.inverse())
 
