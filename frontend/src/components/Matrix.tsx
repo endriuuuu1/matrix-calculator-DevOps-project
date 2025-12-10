@@ -15,12 +15,12 @@ export default function Matrix({
 
   function addRow() {
     if (matrix.length >= MAX_SIZE) return;
-    setMatrix((prev) => [...prev, Array(prev[0].length).fill(0)]);
+    setMatrix((prev) => [...prev, Array(prev[0].length).fill("")]);
   }
 
   function addColumn() {
     if (matrix[0].length >= MAX_SIZE) return;
-    setMatrix((prev) => prev.map((row) => [...row, 0]));
+    setMatrix((prev) => prev.map((row) => [...row, ""]));
   }
 
   function removeRow() {
@@ -39,6 +39,35 @@ export default function Matrix({
     );
     setMatrix(newMatrix);
   }
+
+  //   function setRowManual(newRowCount: number) {
+  //     const count = Math.max(1, Math.min(MAX_SIZE, newRowCount)); // 1-დან MAX_SIZE-მდე
+  //     const currentCols = matrix[0].length;
+
+  //     if (count > matrix.length) {
+  //       const rowsToAdd = count - matrix.length;
+  //       const newRows = Array.from({ length: rowsToAdd }, () =>
+  //         Array(currentCols).fill("")
+  //       );
+  //       setMatrix((prev) => [...prev, ...newRows]);
+  //     } else if (count < matrix.length) {
+  //       setMatrix((prev) => prev.slice(0, count));
+  //     }
+  //   }
+
+  //   function setColumnManual(newColCount: number) {
+  //     const count = Math.max(1, Math.min(MAX_SIZE, newColCount)); // 1-დან MAX_SIZE-მდე
+  //     const currentCols = matrix[0].length;
+
+  //     if (count > currentCols) {
+  //       const colsToAdd = count - currentCols;
+  //       setMatrix((prev) =>
+  //         prev.map((row) => [...row, ...Array(colsToAdd).fill("")])
+  //       );
+  //     } else if (count < currentCols) {
+  //       setMatrix((prev) => prev.map((row) => row.slice(0, count)));
+  //     }
+  //   }
 
   return (
     <div
@@ -63,6 +92,7 @@ export default function Matrix({
             onIncrease={addRow}
             onDecrease={removeRow}
             lenght={matrix.length}
+            // onManualChange={setRowManual}
           />
           <p className="text-[2.4rem] font-bold">X</p>
           <Row_Column
@@ -70,6 +100,7 @@ export default function Matrix({
             onIncrease={addColumn}
             onDecrease={removeColumn}
             lenght={matrix[0].length}
+            // onManualChange={setColumnManual}
           />
         </div>
         <div

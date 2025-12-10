@@ -3,11 +3,13 @@ export default function Row_Column({
   onIncrease,
   onDecrease,
   lenght,
-}: {
+}: // onManualChange,
+{
   type: string;
   onIncrease: () => void;
   onDecrease: () => void;
   lenght: number;
+  // onManualChange: (newColCount: number) => void;
 }) {
   return (
     <div
@@ -24,11 +26,16 @@ export default function Row_Column({
           w-full outline-none
           
         "
-          type="text"
+          type="number"
           value={lenght}
+          // onChange={(e) => {
+          //   const val = parseInt(e.target.value) || 1;
+          //   onManualChange(val);
+          // }}
         />
         <div className="flex">
           <svg
+            className="cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -46,6 +53,7 @@ export default function Row_Column({
             </g>
           </svg>
           <svg
+            className="cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
