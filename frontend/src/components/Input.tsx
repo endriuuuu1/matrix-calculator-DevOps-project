@@ -2,7 +2,7 @@ export default function Input({
   value,
   onChange,
 }: {
-  value: number;
+  value: string | number;
   onChange: (val: any) => void;
 }) {
   return (
@@ -13,6 +13,7 @@ export default function Input({
       [&::-webkit-inner-spin-button]:appearance-none
       text-[1.3rem]"
       value={value}
+      placeholder=""
       onChange={(e) => onChange(e.target.value)}
     />
   );

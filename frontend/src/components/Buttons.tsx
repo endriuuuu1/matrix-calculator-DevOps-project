@@ -16,6 +16,7 @@ export default function Buttons() {
     >
       {buttonsArray.map((b) => (
         <div
+          key={b}
           className={`${
             b === "x" ? "bg-black rounded-[0.8rem] px-[0.6rem]" : "bg-none"
           }`}
