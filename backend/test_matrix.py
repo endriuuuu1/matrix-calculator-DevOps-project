@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.getcwd()) # Tells python look in the current folder too
 import unittest
 from matrix import Matrix
 

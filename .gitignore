@@ -15,3 +15,10 @@ __pycache__/
 # Ignore Mac/Windows system files
 .DS_Store
 Thumbs.db
+
+
+
+# Node/Frontend Junk (For Giorgi)
+node_modules/
+build/
+.env

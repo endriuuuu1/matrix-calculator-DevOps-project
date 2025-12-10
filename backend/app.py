@@ -1,5 +1,10 @@
 from flask import Flask, request, jsonify, render_template
 from matrix import Matrix
+import sys
+import os
+sys.path.append(os.getcwd())
+
+
 
 app = Flask(__name__)
 
