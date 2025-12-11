@@ -20,7 +20,9 @@ function Result({ result }: { result: any }) {
   if (result.operation === "determinant") {
     return (
       <div className="text-center p-8 bg-white rounded-lg shadow">
-        <h3 className="text-xl font-bold mb-4">Result - {result.operation}</h3>
+        <h3 className="text-[2.4rem] font-bold mb-4">
+          Result - {result.operation}
+        </h3>
         <p className="text-3xl font-bold">{result.result}</p>
       </div>
     );

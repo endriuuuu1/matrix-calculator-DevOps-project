@@ -9,6 +9,9 @@ import {
   determinantHandler,
   inverseHandler,
   scalarHandler,
+  addHandler,
+  subHandler,
+  multiplyHandler,
 } from "./functions";
 
 function App() {
@@ -20,6 +23,8 @@ function App() {
   );
   const [result, setResult] = useState<any>(null);
   const [scalarNum, setScalarNum] = useState<string>("3");
+  const matrixATitle = "Matrix A";
+  const matrixBTitle = "Matrix B";
 
   return (
     <div
@@ -34,37 +39,49 @@ function App() {
       "
       >
         <Matrix
-          title="Matrix A"
+          title={matrixATitle}
           matrix={matrixA}
           setMatrix={setMatrixA}
-          transposeHandler={() => transposeHandler(matrixA, matrixB, setResult)}
-          determinantHandler={() =>
-            determinantHandler(matrixA, matrixB, setResult)
+          transposeHandler={() =>
+            transposeHandler(matrixA, matrixB, setResult, matrixATitle)
           }
-          inverseHandler={() => inverseHandler(matrixA, matrixB, setResult)}
+          determinantHandler={() =>
+            determinantHandler(matrixA, matrixB, setResult, matrixATitle)
+          }
+          inverseHandler={() =>
+            inverseHandler(matrixA, matrixB, setResult, matrixATitle)
+          }
           scalarNum={scalarNum}
           setScalarNum={setScalarNum}
           scalarHandler={() =>
-            scalarHandler(matrixA, matrixB, setResult, scalarNum)
+            scalarHandler(matrixA, matrixB, setResult, scalarNum, matrixATitle)
           }
         />
         <Matrix
-          title="Matrix B"
+          title={matrixBTitle}
           matrix={matrixB}
           setMatrix={setMatrixB}
-          transposeHandler={() => transposeHandler(matrixA, matrixB, setResult)}
-          determinantHandler={() =>
-            determinantHandler(matrixA, matrixB, setResult)
+          transposeHandler={() =>
+            transposeHandler(matrixA, matrixB, setResult, matrixBTitle)
           }
-          inverseHandler={() => inverseHandler(matrixA, matrixB, setResult)}
+          determinantHandler={() =>
+            determinantHandler(matrixA, matrixB, setResult, matrixBTitle)
+          }
+          inverseHandler={() =>
+            inverseHandler(matrixA, matrixB, setResult, matrixBTitle)
+          }
           scalarNum={scalarNum}
           setScalarNum={setScalarNum}
           scalarHandler={() =>
-            scalarHandler(matrixA, matrixB, setResult, scalarNum)
+            scalarHandler(matrixA, matrixB, setResult, scalarNum, matrixBTitle)
           }
         />
       </div>
-      <BasicCalculation />
+      <BasicCalculation
+        addHandler={() => addHandler(matrixA, matrixB, setResult)}
+        subHandler={() => subHandler(matrixA, matrixB, setResult)}
+        multiplyHandler={() => multiplyHandler(matrixA, matrixB, setResult)}
+      />
       <Result result={result} />
     </div>
   );
