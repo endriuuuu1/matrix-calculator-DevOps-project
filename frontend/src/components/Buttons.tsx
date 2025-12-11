@@ -3,11 +3,17 @@ export default function Buttons({
   allZeroHandler,
   randomHandler,
   allOneHandler,
+  transposeHandler,
+  determinantHandler,
+  inverseHandler,
 }: {
   clearHandler: () => void;
   allZeroHandler: () => void;
   randomHandler: () => void;
   allOneHandler: () => void;
+  transposeHandler: () => Promise<void>;
+  determinantHandler: () => Promise<void>;
+  inverseHandler: () => Promise<void>;
 }) {
   const buttonsArray = [
     "Clear",
@@ -28,14 +34,16 @@ export default function Buttons({
         <div
           key={b}
           className={`${
-            b === "x" ? "bg-black rounded-[0.8rem] px-[0.6rem]" : "bg-none"
+            b === "x"
+              ? "hover:bg-[#FF0000] transition-all duration-300 bg-black rounded-[0.8rem] px-[0.6rem]"
+              : "bg-none"
           }`}
         >
           <button
             className={`p-[0.5rem] text-white
         rounded-[0.8rem] text-[1.6rem]
-        cursor-pointer
-        ${b === "x" ? "bg-none" : "bg-black"}`}
+        cursor-pointer transition-all duration-300
+        ${b === "x" ? "bg-none" : "bg-black hover:bg-[#FF0000]"}`}
             onClick={() => {
               if (b === "Clear") {
                 clearHandler();
@@ -45,6 +53,12 @@ export default function Buttons({
                 randomHandler();
               } else if (b === "All 1") {
                 allOneHandler();
+              } else if (b === "Transpose") {
+                transposeHandler();
+              } else if (b === "Determinant") {
+                determinantHandler();
+              } else if (b === "Inverse") {
+                inverseHandler();
               }
             }}
           >

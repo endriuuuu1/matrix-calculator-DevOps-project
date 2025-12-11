@@ -19,10 +19,16 @@ export default function Matrix({
   title,
   matrix,
   setMatrix,
+  transposeHandler,
+  determinantHandler,
+  inverseHandler,
 }: {
   title: string;
   matrix: any[][];
   setMatrix: React.Dispatch<React.SetStateAction<any[][]>>;
+  transposeHandler: () => Promise<void>;
+  determinantHandler: () => Promise<void>;
+  inverseHandler: () => Promise<void>;
 }) {
   const setRowManual = (newRowCount: number) => {
     setRowManualUtil(matrix, setMatrix, newRowCount);
@@ -68,7 +74,7 @@ export default function Matrix({
         </div>
         <div
           className="grid gap-2
-        p-[1.6rem]"
+          p-[1.6rem]"
           style={{ gridTemplateColumns: `repeat(${matrix[0].length}, 50px)` }}
         >
           {matrix.map((row, r) =>
@@ -87,6 +93,9 @@ export default function Matrix({
         allZeroHandler={() => allZeroHandler(setMatrix)}
         randomHandler={() => randomHandler(setMatrix)}
         allOneHandler={() => allOneHandler(setMatrix)}
+        transposeHandler={transposeHandler}
+        determinantHandler={determinantHandler}
+        inverseHandler={inverseHandler}
       />
     </div>
   );
