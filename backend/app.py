@@ -87,7 +87,11 @@ def calculate():
 
             match operation:
                 case "scalar_multiply":
-                    scalar_num = data.get('scalar_num', 1)
+                    value = data.get('scalar_num')
+                    if value is None or value == "":
+                        scalar_num = 1
+                    else:
+                        scalar_num = value
                     result_data = single_matrix.scalar_multiply(scalar_num).data
                 case "transpose":
                     result_data = single_matrix.transpose().data
