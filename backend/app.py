@@ -90,8 +90,10 @@ def calculate():
                     value = data.get('scalar_num')
                     if value is None or value == "":
                         scalar_num = 1
+                        operation = "Scalar Multiplication"
                     else:
                         scalar_num = value
+                        operation = "Scalar Multiplication"
                     result_data = single_matrix.scalar_multiply(scalar_num).data
                 case "transpose":
                     result_data = single_matrix.transpose().data
