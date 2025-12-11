@@ -45,6 +45,7 @@ def calculate():
 
     try:
         result_data = None
+        used_matrix = None
 
         # ჩეკი: სიტუაცია სადაც ორივე მატრიცა საჭიროა
         if operation in double_operation_list:
@@ -59,12 +60,15 @@ def calculate():
                 case "add":
                     result_data = matrix_a.add(matrix_b).data
                     operation = "Addition"
+                    used_matrix = "A+B"
                 case "subtract":
                     result_data = matrix_a.subtract(matrix_b).data
                     operation = "Subtraction"
+                    used_matrix = "A-B"
                 case "multiply":
                     result_data = matrix_a.multiply(matrix_b).data
                     operation = "Multiplication"
+                    used_matrix = "AB"
 
             # if operation == "add":
             #     result_data = matrix_a.add(matrix_b)
@@ -77,7 +81,7 @@ def calculate():
         elif operation in single_operation_list:
 
             single_matrix = None
-            used_matrix = None
+            # used_matrix = None # not used right now
 
             # ჩეკავს პირველი და მეორემატრცია ვალიდურია თუ არა
             if is_valid_matrix(raw_matrix_a):
