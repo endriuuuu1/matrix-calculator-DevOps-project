@@ -1,16 +1,23 @@
+import { useEffect, useState } from "react";
+
 export default function Row_Column({
   type,
   onIncrease,
   onDecrease,
   lenght,
-}: // onManualChange,
-{
+  onManualChange,
+}: {
   type: string;
   onIncrease: () => void;
   onDecrease: () => void;
   lenght: number;
-  // onManualChange: (newColCount: number) => void;
+  onManualChange: (newColCount: number) => void;
 }) {
+  const [inputValue, setInputValue] = useState(lenght.toString());
+
+  useEffect(() => {
+    setInputValue(lenght.toString());
+  }, [lenght]);
   return (
     <div
       className="flex flex-col bg-[#808080]/50 rounded-[0.8rem]
@@ -24,14 +31,25 @@ export default function Row_Column({
           className="border border-black rounded-[0.8rem]
           px-[1.6rem] text-[1.3rem] font-[500]
           w-full outline-none
+          [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none 
+          [&::-webkit-inner-spin-button]:appearance-none
           
         "
           type="number"
-          value={lenght}
-          // onChange={(e) => {
-          //   const val = parseInt(e.target.value) || 1;
-          //   onManualChange(val);
-          // }}
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+          }}
+          onBlur={(e) => {
+            const val = parseInt(e.target.value);
+            if (isNaN(val) || val < 1) {
+              onManualChange(1);
+            } else if (val > 10) {
+              onManualChange(10);
+            } else {
+              onManualChange(val);
+            }
+          }}
         />
         <div className="flex">
           <svg

@@ -1,6 +1,19 @@
 import Buttons from "./Buttons";
 import Input from "./Input";
 import Row_Column from "./Row_Column";
+import {
+  addRow,
+  addColumn,
+  removeRow,
+  removeColumn,
+  updateCell,
+  setRowManual as setRowManualUtil,
+  setColumnManual as setColumnManualUtil,
+  clearHandler,
+  allZeroHandler,
+  randomHandler,
+  allOneHandler,
+} from "../functions";
 
 export default function Matrix({
   title,
@@ -11,63 +24,13 @@ export default function Matrix({
   matrix: any[][];
   setMatrix: React.Dispatch<React.SetStateAction<any[][]>>;
 }) {
-  const MAX_SIZE = 10;
+  const setRowManual = (newRowCount: number) => {
+    setRowManualUtil(matrix, setMatrix, newRowCount);
+  };
 
-  function addRow() {
-    if (matrix.length >= MAX_SIZE) return;
-    setMatrix((prev) => [...prev, Array(prev[0].length).fill("")]);
-  }
-
-  function addColumn() {
-    if (matrix[0].length >= MAX_SIZE) return;
-    setMatrix((prev) => prev.map((row) => [...row, ""]));
-  }
-
-  function removeRow() {
-    if (matrix.length <= 1) return;
-    setMatrix((prev) => prev.slice(0, -1));
-  }
-
-  function removeColumn() {
-    if (matrix[0].length <= 1) return;
-    setMatrix((prev) => prev.map((row) => row.slice(0, -1)));
-  }
-
-  function updateCell(r: number, c: number, value: number) {
-    const newMatrix = matrix.map((row, ri) =>
-      row.map((cell, ci) => (ri === r && ci === c ? value : cell))
-    );
-    setMatrix(newMatrix);
-  }
-
-  //   function setRowManual(newRowCount: number) {
-  //     const count = Math.max(1, Math.min(MAX_SIZE, newRowCount)); // 1-დან MAX_SIZE-მდე
-  //     const currentCols = matrix[0].length;
-
-  //     if (count > matrix.length) {
-  //       const rowsToAdd = count - matrix.length;
-  //       const newRows = Array.from({ length: rowsToAdd }, () =>
-  //         Array(currentCols).fill("")
-  //       );
-  //       setMatrix((prev) => [...prev, ...newRows]);
-  //     } else if (count < matrix.length) {
-  //       setMatrix((prev) => prev.slice(0, count));
-  //     }
-  //   }
-
-  //   function setColumnManual(newColCount: number) {
-  //     const count = Math.max(1, Math.min(MAX_SIZE, newColCount)); // 1-დან MAX_SIZE-მდე
-  //     const currentCols = matrix[0].length;
-
-  //     if (count > currentCols) {
-  //       const colsToAdd = count - currentCols;
-  //       setMatrix((prev) =>
-  //         prev.map((row) => [...row, ...Array(colsToAdd).fill("")])
-  //       );
-  //     } else if (count < currentCols) {
-  //       setMatrix((prev) => prev.map((row) => row.slice(0, count)));
-  //     }
-  //   }
+  const setColumnManual = (newRowCount: number) => {
+    setColumnManualUtil(matrix, setMatrix, newRowCount);
+  };
 
   return (
     <div
@@ -89,18 +52,18 @@ export default function Matrix({
         >
           <Row_Column
             type={"Row"}
-            onIncrease={addRow}
-            onDecrease={removeRow}
+            onIncrease={() => addRow(matrix, setMatrix)}
+            onDecrease={() => removeRow(matrix, setMatrix)}
             lenght={matrix.length}
-            // onManualChange={setRowManual}
+            onManualChange={setRowManual}
           />
           <p className="text-[2.4rem] font-bold">X</p>
           <Row_Column
             type={"Column"}
-            onIncrease={addColumn}
-            onDecrease={removeColumn}
+            onIncrease={() => addColumn(matrix, setMatrix)}
+            onDecrease={() => removeColumn(matrix, setMatrix)}
             lenght={matrix[0].length}
-            // onManualChange={setColumnManual}
+            onManualChange={setColumnManual}
           />
         </div>
         <div
@@ -113,13 +76,18 @@ export default function Matrix({
               <Input
                 key={`${r}-${c}`}
                 value={value}
-                onChange={(v) => updateCell(r, c, v)}
+                onChange={(v) => updateCell(matrix, setMatrix, r, c, v)}
               />
             ))
           )}
         </div>
       </div>
-      <Buttons />
+      <Buttons
+        clearHandler={() => clearHandler(setMatrix)}
+        allZeroHandler={() => allZeroHandler(setMatrix)}
+        randomHandler={() => randomHandler(setMatrix)}
+        allOneHandler={() => allOneHandler(setMatrix)}
+      />
     </div>
   );
 }

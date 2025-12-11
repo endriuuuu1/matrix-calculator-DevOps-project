@@ -1,4 +1,14 @@
-export default function Buttons() {
+export default function Buttons({
+  clearHandler,
+  allZeroHandler,
+  randomHandler,
+  allOneHandler,
+}: {
+  clearHandler: () => void;
+  allZeroHandler: () => void;
+  randomHandler: () => void;
+  allOneHandler: () => void;
+}) {
   const buttonsArray = [
     "Clear",
     "All 0",
@@ -26,6 +36,17 @@ export default function Buttons() {
         rounded-[0.8rem] text-[1.6rem]
         cursor-pointer
         ${b === "x" ? "bg-none" : "bg-black"}`}
+            onClick={() => {
+              if (b === "Clear") {
+                clearHandler();
+              } else if (b === "All 0") {
+                allZeroHandler();
+              } else if (b === "Random") {
+                randomHandler();
+              } else if (b === "All 1") {
+                allOneHandler();
+              }
+            }}
           >
             {b}
           </button>
