@@ -33,6 +33,13 @@ function App() {
     setMatrixB(matrixACopy);
   };
 
+  const copyToAHandler = () => {
+    setMatrixA(result.result);
+  };
+  const copyToBHandler = () => {
+    setMatrixB(result.result);
+  };
+
   return (
     <div
       className="flex flex-col items-center
@@ -90,7 +97,11 @@ function App() {
         multiplyHandler={() => multiplyHandler(matrixA, matrixB, setResult)}
         swapHandler={swapHandler}
       />
-      <Result result={result} />
+      <Result
+        result={result}
+        copyToAHandler={copyToAHandler}
+        copyToBHandler={copyToBHandler}
+      />
     </div>
   );
 }

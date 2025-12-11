@@ -1,4 +1,12 @@
-function Result({ result }: { result: any }) {
+function Result({
+  result,
+  copyToAHandler,
+  copyToBHandler,
+}: {
+  result: any;
+  copyToAHandler: () => void;
+  copyToBHandler: () => void;
+}) {
   if (!result) {
     return (
       <div className="text-center p-8 bg-gray-100 rounded-lg">
@@ -36,7 +44,10 @@ function Result({ result }: { result: any }) {
 
   return (
     <div>
-      <div className="text-center p-8 bg-white rounded-lg shadow max-w-full overflow-x-auto">
+      <div
+        className="text-center p-8 bg-white rounded-lg shadow max-w-full overflow-x-auto
+      flex flex-col"
+      >
         <h3 className="text-[2.4rem] font-bold mb-4">
           Result - {result.operation}
         </h3>
@@ -99,6 +110,30 @@ function Result({ result }: { result: any }) {
             <div className="absolute top-0 right-0 w-1 h-full bg-black"></div>
             <div className="absolute bottom-0 right-0 w-full h-1 bg-black"></div>
           </div>
+        </div>
+        <div
+          className="flex items-center justify-center
+          gap-[2.4rem]
+          mt-[2.4rem]"
+        >
+          <button
+            className="bg-[#0000FF] p-[0.6rem]
+              text-[1.3rem] font-bold text-white
+              rounded-[0.8rem] transition-all duration-300
+              hover:bg-black cursor-pointer"
+            onClick={copyToAHandler}
+          >
+            Copy to A
+          </button>
+          <button
+            className="bg-[#0000FF] p-[0.6rem]
+            text-[1.3rem] font-bold text-white
+            rounded-[0.8rem] transition-all duration-300
+            hover:bg-black cursor-pointer"
+            onClick={copyToBHandler}
+          >
+            Copy to B
+          </button>
         </div>
       </div>
     </div>
