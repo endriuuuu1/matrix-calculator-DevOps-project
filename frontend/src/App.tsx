@@ -26,6 +26,13 @@ function App() {
   const matrixATitle = "Matrix A";
   const matrixBTitle = "Matrix B";
 
+  const swapHandler = () => {
+    const matrixACopy = matrixA.map((row) => [...row]);
+    const matrixBCopy = matrixB.map((row) => [...row]);
+    setMatrixA(matrixBCopy);
+    setMatrixB(matrixACopy);
+  };
+
   return (
     <div
       className="flex flex-col items-center
@@ -81,6 +88,7 @@ function App() {
         addHandler={() => addHandler(matrixA, matrixB, setResult)}
         subHandler={() => subHandler(matrixA, matrixB, setResult)}
         multiplyHandler={() => multiplyHandler(matrixA, matrixB, setResult)}
+        swapHandler={swapHandler}
       />
       <Result result={result} />
     </div>
