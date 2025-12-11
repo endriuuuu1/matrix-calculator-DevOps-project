@@ -22,6 +22,9 @@ export default function Matrix({
   transposeHandler,
   determinantHandler,
   inverseHandler,
+  scalarNum,
+  setScalarNum,
+  scalarHandler,
 }: {
   title: string;
   matrix: any[][];
@@ -29,6 +32,9 @@ export default function Matrix({
   transposeHandler: () => Promise<void>;
   determinantHandler: () => Promise<void>;
   inverseHandler: () => Promise<void>;
+  scalarNum: string;
+  setScalarNum: React.Dispatch<React.SetStateAction<string>>;
+  scalarHandler: () => Promise<void>;
 }) {
   const setRowManual = (newRowCount: number) => {
     setRowManualUtil(matrix, setMatrix, newRowCount);
@@ -96,6 +102,9 @@ export default function Matrix({
         transposeHandler={transposeHandler}
         determinantHandler={determinantHandler}
         inverseHandler={inverseHandler}
+        scalarNum={scalarNum}
+        setSclarNum={setScalarNum}
+        scalarHandler={scalarHandler}
       />
     </div>
   );

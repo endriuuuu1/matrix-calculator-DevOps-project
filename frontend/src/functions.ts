@@ -124,3 +124,111 @@ export const randomHandler = (
       )
   );
 };
+
+export const transposeHandler = async (
+  matrixA: any[][],
+  matrixB: any[][],
+  setResult: React.Dispatch<any>
+) => {
+  const matrix_a = matrixA.map((row) => row.map(Number));
+  const matrix_b = matrixB.map((row) => row.map(Number));
+  try {
+    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        operation: "transpose",
+        matrix_a,
+        matrix_b,
+      }),
+    });
+    const data = await res.json();
+    setResult(data);
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const determinantHandler = async (
+  matrixA: any[][],
+  matrixB: any[][],
+  setResult: React.Dispatch<any>
+) => {
+  const matrix_a = matrixA.map((row) => row.map(Number));
+  const matrix_b = matrixB.map((row) => row.map(Number));
+  try {
+    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        operation: "determinant",
+        matrix_a,
+        matrix_b,
+      }),
+    });
+    const data = await res.json();
+    setResult(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const inverseHandler = async (
+  matrixA: any[][],
+  matrixB: any[][],
+  setResult: React.Dispatch<any>
+) => {
+  const matrix_a = matrixA.map((row) => row.map(Number));
+  const matrix_b = matrixB.map((row) => row.map(Number));
+  try {
+    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        operation: "inverse",
+        matrix_a,
+        matrix_b,
+      }),
+    });
+    const data = await res.json();
+    setResult(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const scalarHandler = async (
+  matrixA: any[][],
+  matrixB: any[][],
+  setResult: React.Dispatch<any>,
+  scalarNum: string
+) => {
+  const matrix_a = matrixA.map((row) => row.map(Number));
+  const matrix_b = matrixB.map((row) => row.map(Number));
+  const scalar_num = Number(scalarNum);
+  try {
+    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        operation: "scalar_multiply",
+        matrix_a,
+        matrix_b,
+        scalar_num,
+      }),
+    });
+    const data = await res.json();
+    setResult(data);
+  } catch (error) {
+    console.log(error);
+  }
+};

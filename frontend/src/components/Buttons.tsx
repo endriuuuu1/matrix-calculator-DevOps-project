@@ -6,6 +6,9 @@ export default function Buttons({
   transposeHandler,
   determinantHandler,
   inverseHandler,
+  setSclarNum,
+  scalarNum,
+  scalarHandler,
 }: {
   clearHandler: () => void;
   allZeroHandler: () => void;
@@ -14,6 +17,9 @@ export default function Buttons({
   transposeHandler: () => Promise<void>;
   determinantHandler: () => Promise<void>;
   inverseHandler: () => Promise<void>;
+  scalarNum: string;
+  setSclarNum: React.Dispatch<React.SetStateAction<string>>;
+  scalarHandler: () => Promise<void>;
 }) {
   const buttonsArray = [
     "Clear",
@@ -59,6 +65,8 @@ export default function Buttons({
                 determinantHandler();
               } else if (b === "Inverse") {
                 inverseHandler();
+              } else if (b === "x") {
+                scalarHandler();
               }
             }}
           >
@@ -73,6 +81,8 @@ export default function Buttons({
             [&::-webkit-inner-spin-button]:appearance-none
             text-center text-[1.3rem] font-[500]
             border-2 outline-none bg-white"
+              value={scalarNum}
+              onChange={(e) => setSclarNum(e.target.value)}
             />
           )}
         </div>

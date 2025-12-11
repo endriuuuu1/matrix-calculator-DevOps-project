@@ -1,5 +1,5 @@
 function Result({ result }: { result: any }) {
-  if (!result || !result.result) {
+  if (!result) {
     return (
       <div className="text-center p-8 bg-gray-100 rounded-lg">
         <p className="text-gray-600">
@@ -11,7 +11,7 @@ function Result({ result }: { result: any }) {
 
   if (result.error) {
     return (
-      <div className="text-center p-8 bg-red-100 rounded-lg">
+      <div className="text-[1.6rem] font-[500] text-center p-8 bg-red-100 rounded-lg">
         <p className="text-red-600">Error: {result.error}</p>
       </div>
     );
@@ -46,17 +46,18 @@ function Result({ result }: { result: any }) {
 
         <div
           className="flex flex-col gap-[1.6rem] py-4
-  text-[1.6rem] font-[600]"
+          text-[1.6rem] font-[600]
+          pl-[1.5rem]"
         >
           {result.result.map((row: number[], rowIndex: number) => (
             <div
               key={rowIndex}
               className="grid gap-[1.6rem] text-left"
-              style={{ gridTemplateColumns: `repeat(${row.length}, 180px)` }}
+              style={{ gridTemplateColumns: `repeat(${row.length}, auto)` }}
             >
               {row.map((cell: number, colIndex: number) => (
                 <span key={colIndex} className="min-w-[4rem]">
-                  {cell}
+                  {Number.isInteger(cell) ? cell : cell.toFixed(3)}
                 </span>
               ))}
             </div>
@@ -64,7 +65,7 @@ function Result({ result }: { result: any }) {
         </div>
 
         <div
-          className="relative ml-4"
+          className="relative"
           style={{
             width: "8px",
             height: `${result.result.length * 3 + 2}rem`,
