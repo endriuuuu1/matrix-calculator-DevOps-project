@@ -16,13 +16,6 @@ def index():
 
 @app.route('/api/calculate', methods=['POST'])
 def calculate():
-    # {
-    # operation: "operation"
-    # matrix_a: "[[]]"
-    # matrix_b: "[[]]"
-    # }
-
-
     data = request.get_json()
 
     if not data:

@@ -46,6 +46,25 @@ class Matrix:
             result_data.append(new_row)
         return Matrix(result_data)
 
+    def copy(self, other_matrix):
+        if self.shape != other_matrix.shape:
+            raise ValueError("Dimensions do not match")
+        else:
+            result_data = []
+
+            for i in range(self.shape[0]):
+                new_row = []
+                for j in range(self.shape[1]):
+                    self.data[i][j] = other_matrix.data[i][j]
+                    new_row.append(self.data[i][j])
+                result_data.append(new_row)
+            return result_data
+
+    def swap(self, other_matrix):
+        if self.shape != other_matrix.shape:
+            raise ValueError("Dimensions do not match")
+        self.data, other_matrix.data = other_matrix.data, self.data
+
     # მატრიცის მინორი
     def minor(self, row_del, col_del):
         minor_data = []
@@ -229,7 +248,7 @@ if __name__ == "__main__":
     bletfen_matrix = Matrix([[1,2],[3,4]])
     andria_matrix = Matrix([[5,6],[7,8]])
 
-    print(bletfen_matrix.scalar_multiply(5))
+    print(bletfen_matrix.swap(andria_matrix))
 
     # emtpy_matrix = Matrix([])
     #
