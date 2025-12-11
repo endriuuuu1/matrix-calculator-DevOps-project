@@ -77,12 +77,15 @@ def calculate():
         elif operation in single_operation_list:
 
             single_matrix = None
+            used_matrix = None
 
             # ჩეკავს პირველი და მეორემატრცია ვალიდურია თუ არა
             if is_valid_matrix(raw_matrix_a):
                 single_matrix = Matrix(raw_matrix_a)
+                used_matrix = "matrix_a"
             elif is_valid_matrix(raw_matrix_b):
                 single_matrix = Matrix(raw_matrix_b)
+                used_matrix = "matrix_b"
             else:
                 # თუ არცერთი მატრიცა არაა შევსებული და ცარიელია აბრუნებს ერორს
                 return jsonify({"error": "Please fill at least one matrix"}), 400
@@ -119,7 +122,8 @@ def calculate():
         return jsonify({
             "status": "success",
             "operation": operation,
-            "result": result_data
+            "matrix_used": used_matrix,
+            "result": result_data,
         })
 
     except ValueError as e:
