@@ -58,10 +58,13 @@ def calculate():
             match operation:
                 case "add":
                     result_data = matrix_a.add(matrix_b).data
+                    operation = "Addition"
                 case "subtract":
                     result_data = matrix_a.subtract(matrix_b).data
+                    operation = "Subtraction"
                 case "multiply":
                     result_data = matrix_a.multiply(matrix_b).data
+                    operation = "Multiplication"
 
             # if operation == "add":
             #     result_data = matrix_a.add(matrix_b)
@@ -97,10 +100,13 @@ def calculate():
                     result_data = single_matrix.scalar_multiply(scalar_num).data
                 case "transpose":
                     result_data = single_matrix.transpose().data
+                    operation = operation.title()
                 case "inverse":
                     result_data = single_matrix.inverse().data
+                    operation = operation.title()
                 case "determinant":
                     result_data = single_matrix.determinant()
+                    operation = operation.title()
 
         # ყველა დანარჩენ არარსებულ ოპერაციების შემთხვევებში
         else:
