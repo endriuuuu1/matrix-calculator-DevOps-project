@@ -1,22 +1,21 @@
-# --- Python specific ---
-# Ignore the Virtual Environment folder (It's huge and local-only)
+# Venv ignore because its big and contains local-only files
 venv/
 .venv/
 
-# Ignore Python compiled files (They are auto-generated)
+# its better to delete than ignore because its already in history
+#.github/workflows/backend-ci.yml
+#.github/workflows/frontend-ci.yml
+
+# Python compiled files:
 __pycache__/
 *.pyc
 
-# --- IDE specific ---
-# Ignore PyCharm settings (Your personal workspace preferences)
+# IDE settings My workspace preferences:
 .idea/
 
-# --- OS specific ---
-# Ignore Mac/Windows system files
+# OS setttings, Mac/Windows system files
 .DS_Store
 Thumbs.db
-
-
 
 # Node/Frontend Junk (For Giorgi)
 node_modules/
