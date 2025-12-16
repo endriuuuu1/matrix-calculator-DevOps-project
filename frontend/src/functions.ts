@@ -141,7 +141,7 @@ export const transposeHandler = async (
     matrix_b = matrixB.map((row) => row.map(Number));
   }
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+    const res = await fetch("http://13.53.207.79:5000/api/calculate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -176,7 +176,7 @@ export const determinantHandler = async (
     matrix_b = matrixB.map((row) => row.map(Number));
   }
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+    const res = await fetch("http://13.53.207.79:5000/api/calculate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -210,7 +210,7 @@ export const inverseHandler = async (
     matrix_b = matrixB.map((row) => row.map(Number));
   }
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+    const res = await fetch("http://13.53.207.79:5000/api/calculate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -246,7 +246,7 @@ export const scalarHandler = async (
   }
   const scalar_num = Number(scalarNum);
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+    const res = await fetch("http://13.53.207.79:5000/api/calculate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -273,7 +273,7 @@ export const addHandler = async (
   const matrix_a = matrixA.map((row) => row.map(Number));
   const matrix_b = matrixB.map((row) => row.map(Number));
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+    const res = await fetch("http://13.53.207.79:5000/api/calculate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -299,7 +299,7 @@ export const subHandler = async (
   const matrix_a = matrixA.map((row) => row.map(Number));
   const matrix_b = matrixB.map((row) => row.map(Number));
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+    const res = await fetch("http://13.53.207.79:5000/api/calculate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -324,7 +324,7 @@ export const multiplyHandler = async (
   const matrix_a = matrixA.map((row) => row.map(Number));
   const matrix_b = matrixB.map((row) => row.map(Number));
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/calculate", {
+    const res = await fetch("http://13.53.207.79:5000/api/calculate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
