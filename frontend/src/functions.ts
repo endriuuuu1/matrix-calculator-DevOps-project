@@ -1,4 +1,7 @@
 const MAX_SIZE = 10;
+
+const API_URL = "http://matrix-calculator-ge.cloud-ip.cc:5000";
+
 export function addRow(
   matrix: any[][],
   setMatrix: React.Dispatch<React.SetStateAction<any[][]>>
@@ -141,7 +144,7 @@ export const transposeHandler = async (
     matrix_b = matrixB.map((row) => row.map(Number));
   }
   try {
-    const res = await fetch("http://51.20.138.133:5000/api/calculate", {
+    const res = await fetch(`${API_URL}/api/calculate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -176,7 +179,7 @@ export const determinantHandler = async (
     matrix_b = matrixB.map((row) => row.map(Number));
   }
   try {
-    const res = await fetch("http://51.20.138.133:5000/api/calculate", {
+    const res = await fetch(`${API_URL}/api/calculate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -210,7 +213,7 @@ export const inverseHandler = async (
     matrix_b = matrixB.map((row) => row.map(Number));
   }
   try {
-    const res = await fetch("http://51.20.138.133:5000/api/calculate", {
+    const res = await fetch(`${API_URL}/api/calculate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -246,7 +249,7 @@ export const scalarHandler = async (
   }
   const scalar_num = Number(scalarNum);
   try {
-    const res = await fetch("http://51.20.138.133:5000/api/calculate", {
+    const res = await fetch(`${API_URL}/api/calculate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -273,7 +276,7 @@ export const addHandler = async (
   const matrix_a = matrixA.map((row) => row.map(Number));
   const matrix_b = matrixB.map((row) => row.map(Number));
   try {
-    const res = await fetch("http://51.20.138.133:5000/api/calculate", {
+    const res = await fetch(`${API_URL}/api/calculate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -299,7 +302,7 @@ export const subHandler = async (
   const matrix_a = matrixA.map((row) => row.map(Number));
   const matrix_b = matrixB.map((row) => row.map(Number));
   try {
-    const res = await fetch("http://51.20.138.133:5000/api/calculate", {
+    const res = await fetch(`${API_URL}/api/calculate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -324,7 +327,7 @@ export const multiplyHandler = async (
   const matrix_a = matrixA.map((row) => row.map(Number));
   const matrix_b = matrixB.map((row) => row.map(Number));
   try {
-    const res = await fetch("http://51.20.138.133:5000/api/calculate", {
+    const res = await fetch(`${API_URL}/api/calculate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
